@@ -1,1 +1,6 @@
 Outline of the project to be submitted by Wednesday
+Possible classes:
+- Runner
+- Player (keeps track of the health and points)
+- Dictionary (reads a text file with a list of English words to decide if a given word is valid)
+- DisplayText (parent class for all visible text objects such as the letters and the word)
