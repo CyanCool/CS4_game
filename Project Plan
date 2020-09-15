@@ -4,3 +4,6 @@ Possible classes:
 - Player (keeps track of the health and points)
 - Dictionary (reads a text file with a list of English words to decide if a given word is valid)
 - DisplayText (parent class for all visible text objects such as the letters and the word)
+  * Letter (inherits from DisplayText, one instance for each of the 4 or more letter options)
+- WordGame (extends Canvas, called by Runner, implements main game logic)
+- KeyListener (used to record key presses, maybe mouse clicks)
