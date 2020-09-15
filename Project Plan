@@ -1,4 +1,9 @@
 Outline of the project to be submitted by Wednesday
+Game Title: Word Wrangler
+Game Description: A number of letters appear on the screen surrounding a text box, where a user types a word consisted of 2 or more of those letters.
+To submit the word, the user presses the 'Space' bar. Correct answers result in the increment of points depending on the difficulty of the word,
+while the converse results in the loss of health. The game ends when the health bar reaches 0.
+
 Possible classes:
 - Runner
 - Player (keeps track of the health and points)
