@@ -53,19 +53,19 @@ public class Prototype extends JPanel implements Runnable, KeyListener{
 		window.drawString(Character.toString(c), 30, 310);
 		window.drawString(Character.toString(d), 730, 310);
 		
-		if (keys[1]) {
+		if (keys[0]) {
 			word = word + a;
 			a = (char)((int)(Math.random()*26)+97);
 		}
-		if (keys[0]) {
+		if (keys[1]) {
 			word = word + b;
 			b = (char)((int)(Math.random()*26)+97);
 		}
-		if (keys[3]) {
+		if (keys[2]) {
 			word = word + c;
 			c = (char)((int)(Math.random()*26)+97);
 		}
-		if (keys[2]) {
+		if (keys[3]) {
 			word = word + d;
 			d = (char)((int)(Math.random()*26)+97);
 		}
