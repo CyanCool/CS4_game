@@ -11,7 +11,8 @@ public class wordWranglerRunner extends JFrame
 	{
 		super("wordWranglerRunner");
 		setSize(WIDTH, HEIGHT);
-		getContentPane().add(new wordWrangler(WIDTH, HEIGHT));
+		//prototype is temporary
+		getContentPane().add(new Prototype());
 		setVisible(true);	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
