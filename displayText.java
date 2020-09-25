@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Canvas;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+
 import javax.swing.*;
 import java.util.*;
 import java.util.Timer;
@@ -20,10 +22,12 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 	private Letter c;
 	private Letter d;
 	private Word word;
+	private Player p;
+	private int wordCount;
 	//private Player player;
 	
 	
-	public displayText() 
+	public displayText() throws FileNotFoundException 
 	{
 
 		a = new Letter();
@@ -33,24 +37,27 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 //		
 		word = new Word();
 		keys = new boolean[5];
-		//player = new Player();
+		p = new Player();
+		wordCount = 0;
 		
-		addKeyListener( this );   	//
-		setFocusable( true );		// Do NOT DELETE these three lines
-		new Thread(this).start();   //
+		addKeyListener( this );   	
+		setFocusable( true );		
+		new Thread(this).start();   
 		
 	}
 	
-	public void paint(Graphics window) 
+	public void paint(Graphics window)
 	{
 		window.setColor(Color.decode("#00bfff"));
 		window.fillRect( 0,0, 800, 600);
-		
 		window.setFont(new Font("Verdana",Font.PLAIN, word.getFontSize()));
 		window.setColor(Color.white);
-		window.fillRect(200, 300-word.getFontSize(), 400, word.getFontSize()+5);
+		window.fillRect(195, 300-word.getFontSize(), 400, word.getFontSize()+15);
 		window.setColor(Color.black);
-		window.drawRect(200, 300-word.getFontSize(), 400, word.getFontSize()+5);
+		window.drawRect(195, 300-word.getFontSize(), 400, word.getFontSize()+15);
+		if(word.isValid()) {
+			window.setColor(Color.GREEN);
+		}
 		window.drawString(word.toString(), 200, 300);
 		
 		
@@ -60,6 +67,7 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 //		window.drawImage(img1, 0, 260, 200, 150, this);
 //		window.drawImage(img1, 700, 260, 200, 150, this);
 		
+		window.setColor(Color.black);
 		window.setFont(new Font("Verdana",Font.PLAIN, 50));
 		window.drawString(Character.toString((a.getChar())), 380, 50);
 		window.drawString(Character.toString((b.getChar())), 380, 580);
@@ -70,14 +78,14 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		//window.drawString(Integer.toString(player.getPoints()),360, 150);
 		
 		window.setFont(new Font("Verdana",Font.ITALIC, 20));
-		window.drawString("Points",360, 150);
-		window.drawString("Health",360, 450);
+		window.drawString("Points "+p.points,360, 150);
+		window.drawString("Health "+p.health,360, 450);
 		
 		if (keys[1]) 
 		{
 			word.addLetter(b);
 			b = new Letter();
-			word.decrementFontSize();
+			word.decrementFontSize();			
 		}
 		if (keys[0]) 
 		{
@@ -99,7 +107,22 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		}
 		if (keys[4]) 
 		{
-			word = new Word();
+			wordCount++;
+			boolean valid = word.isValid();
+			p.submitWord(word.toString(), valid);
+			try {
+				word = new Word();
+			} catch (FileNotFoundException e) {}
+			if(wordCount>=5) {
+				wordCount = 0;
+				a = new Letter();
+				b = new Letter();
+				c = new Letter();
+				d = new Letter();
+			}
+			if(p.health<=0) {
+				System.exit(0);
+			}
 		}
 		
 	

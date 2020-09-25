@@ -23,6 +23,17 @@ public class Player {
 		}
 	}
 	
+	public void submitWord(String s, boolean valid) {
+		if(valid) {
+			points += s.length()*10;
+			health += s.length()*2;
+		} else {
+			int damage = s.length()*5;
+			if(damage>45) damage=45;
+			health -= damage;
+		}
+	}
+	
 	public String toString() {
 		return ("Points: " + points + "\nHealth: " + health);
 		

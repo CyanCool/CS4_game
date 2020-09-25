@@ -1,14 +1,19 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Word 
 {
 	private String word;
 	private int fontsize; 
+	private boolean valid;
+	private Dictionary d;
 	
-	public Word()
+	public Word() throws FileNotFoundException
 	{
 		word = "";
 		fontsize = 50;
+		valid = false;
+		d = new Dictionary();
 	}
 	
 	public void addLetter(Letter a)
@@ -17,6 +22,7 @@ public class Word
 		{
 			word += a.getChar();
 		}
+		valid = d.isWord(word);
 	}
 	
 	public int getLength()
@@ -45,6 +51,10 @@ public class Word
 	public String toString()
 	{
 		return word;
+	}
+	public boolean isValid()
+	{
+		return valid;
 	}
 	
 	
