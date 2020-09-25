@@ -48,8 +48,10 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 	
 	public void paint(Graphics window)
 	{
-		window.setColor(Color.decode("#00bfff"));
+		window.setColor(Color.decode("#33ff33"));
 		window.fillRect( 0,0, 800, 600);
+		//Image img2 = Toolkit.getDefaultToolkit().getImage("Grass.png");
+		//window.drawImage(img2, 0,0,800,800,this);
 		window.setFont(new Font("Verdana",Font.PLAIN, word.getFontSize()));
 		window.setColor(Color.white);
 		window.fillRect(195, 300-word.getFontSize(), 400, word.getFontSize()+15);
@@ -61,11 +63,11 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		window.drawString(word.toString(), 200, 300);
 		
 		
-//		Image img1 = Toolkit.getDefaultToolkit().getImage("cow.png");
-//		window.drawImage(img1, 290, 0, 200, 150, this);
-//		window.drawImage(img1, 290, 530, 200, 150, this);
-//		window.drawImage(img1, 0, 260, 200, 150, this);
-//		window.drawImage(img1, 700, 260, 200, 150, this);
+		Image img1 = Toolkit.getDefaultToolkit().getImage("cow.png");
+		window.drawImage(img1, 290, -50, 200, 150, this);
+		window.drawImage(img1, 290, 475, 200, 150, this);
+		window.drawImage(img1, -60, 210, 200, 150, this);
+		window.drawImage(img1, 640, 210, 200, 150, this);
 		
 		window.setColor(Color.black);
 		window.setFont(new Font("Verdana",Font.PLAIN, 50));
