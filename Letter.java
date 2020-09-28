@@ -4,6 +4,7 @@ public class Letter
 {
 	private int size;
 	private char identity;
+	private int powerUp;
 	
 	public Letter()
 	{
@@ -15,19 +16,32 @@ public class Letter
 			tot += freq[i];
 		}
 		int r = (int)(Math.random()*tot)+1;
-		int i=0;
+		int j=0;
 		while(r>0) {
-			r -= freq[i];
-			i++;
+			r -= freq[j];
+			j++;
 		}
-		identity = (char)(i+96);
-	}
-	public void changeSize()
-	{
-		size -= 5;
+		identity = (char)(j+96);
+		
+		int[] powerups = {10,1};
+		tot = 0;
+		for(int i=0; i<powerups.length; i++) {
+			tot += freq[i];
+		}
+		r = (int)(Math.random()*tot)+1;
+		j=0;
+		while(r>0) {
+			r -= powerups[j];
+			j++;
+		}
+		powerUp = j-1;
+		
 	}
 	public char getChar()
 	{
+		switch(powerUp) {
+			case 1: identity='*';
+		}
 		return identity;
 	}
 }
