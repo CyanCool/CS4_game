@@ -25,6 +25,14 @@ public class Word
 		valid = d.isWord(word);
 	}
 	
+	public void addLetter(char a) {
+		if(word.length()<30)
+		{
+			word += a;
+		}
+		valid = d.isWord(word);
+	}
+	
 	public int getLength()
 	{
 		return word.length();

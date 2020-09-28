@@ -24,6 +24,7 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 	private Word word;
 	private Player p;
 	private int wordCount;
+	private char freeLetter;
 	//private Player player;
 	
 	
@@ -80,30 +81,46 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		//window.drawString(Integer.toString(player.getPoints()),360, 150);
 		
 		window.setFont(new Font("Verdana",Font.ITALIC, 20));
-		window.drawString("Points "+p.points,360, 150);
-		window.drawString("Health "+p.health,360, 450);
+		window.drawString("Points "+p.points,350, 150);
+		window.drawString("Health "+p.health,340, 450);
 		
 		if (keys[1]) 
 		{
-			word.addLetter(b);
+			if(b.getChar()=='*') {
+				word.addLetter(freeLetter);
+			} else {
+				word.addLetter(b);
+			}
 			b = new Letter();
 			word.decrementFontSize();			
 		}
 		if (keys[0]) 
 		{
-			word.addLetter(a);
+			if(a.getChar()=='*') {
+				word.addLetter(freeLetter);
+			} else {
+				word.addLetter(a);
+			}
 			a = new Letter();
 			word.decrementFontSize();
 		}
 		if (keys[3]) 
 		{
-			word.addLetter(d);
+			if(d.getChar()=='*') {
+				word.addLetter(freeLetter);
+			} else {
+				word.addLetter(d);
+			}
 			d = new Letter();
 			word.decrementFontSize();
 		}
 		if (keys[2]) 
 		{
-			word.addLetter(c);
+			if(c.getChar()=='*') {
+				word.addLetter(freeLetter);
+			} else {
+				word.addLetter(c);
+			}
 			c = new Letter();
 			word.decrementFontSize();
 		}
@@ -165,6 +182,10 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		{
 			keys[4] = true;
 		}
+		if(Character.toString(e.getKeyChar()).matches("[a-z]")) {
+			freeLetter = e.getKeyChar();
+		}
+				
 	}
 	
 	// do not edit anything from this point on!!!
