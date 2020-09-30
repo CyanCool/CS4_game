@@ -33,6 +33,13 @@ public class Word
 		valid = d.isWord(word);
 	}
 	
+	public void removeLetter() {
+		if(word.length()>0) {
+			word = word.substring(0,word.length()-1);
+		}
+		valid = d.isWord(word);
+	}
+	
 	public int getLength()
 	{
 		return word.length();

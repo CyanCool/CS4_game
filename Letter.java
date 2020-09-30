@@ -15,7 +15,7 @@ public class Letter
 		for(int i=0; i<freq.length; i++) {
 			tot += freq[i];
 		}
-		int r = (int)(Math.random()*tot)+1;
+		int r = ((int)(Math.random()*tot))+1;
 		int j=0;
 		while(r>0) {
 			r -= freq[j];
@@ -23,24 +23,25 @@ public class Letter
 		}
 		identity = (char)(j+96);
 		
-		int[] powerups = {10,1};
+		int[] powerups = {12,2,2};
 		tot = 0;
 		for(int i=0; i<powerups.length; i++) {
-			tot += freq[i];
+			tot += powerups[i];
 		}
-		r = (int)(Math.random()*tot)+1;
-		j=0;
+		r = ((int)(Math.random()*tot))+1;
+		j=-1;
 		while(r>0) {
-			r -= powerups[j];
 			j++;
+			r -= powerups[j];
 		}
-		powerUp = j-1;
-		
+		powerUp = j;
 	}
 	public char getChar()
 	{
-		switch(powerUp) {
-			case 1: identity='*';
+		if(powerUp==1) {
+			identity='*';
+		} else if (powerUp==2) {
+			identity='<';
 		}
 		return identity;
 	}
