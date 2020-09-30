@@ -88,6 +88,8 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		{
 			if(b.getChar()=='*') {
 				word.addLetter(freeLetter);
+			} else if(b.getChar()=='<'){
+				word.removeLetter();
 			} else {
 				word.addLetter(b);
 			}
@@ -98,7 +100,9 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		{
 			if(a.getChar()=='*') {
 				word.addLetter(freeLetter);
-			} else {
+			} else if(a.getChar()=='<'){
+				word.removeLetter();
+			}  else {
 				word.addLetter(a);
 			}
 			a = new Letter();
@@ -108,7 +112,9 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		{
 			if(d.getChar()=='*') {
 				word.addLetter(freeLetter);
-			} else {
+			} else if(d.getChar()=='<'){
+				word.removeLetter();
+			}  else {
 				word.addLetter(d);
 			}
 			d = new Letter();
@@ -118,7 +124,9 @@ public class displayText extends JPanel implements Runnable, KeyListener{
 		{
 			if(c.getChar()=='*') {
 				word.addLetter(freeLetter);
-			} else {
+			} else if(c.getChar()=='<'){
+				word.removeLetter();
+			}  else {
 				word.addLetter(c);
 			}
 			c = new Letter();

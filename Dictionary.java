@@ -31,6 +31,8 @@ public class Dictionary {
 	
 	public boolean isWord(String s) {
 		
+		if(s.length()<2) return false;
+		
 		int start = indLetters[s.charAt(0)-97];
 		int end = indLetters[s.charAt(0)-97+1];
 		
