@@ -23,7 +23,7 @@ public class Letter
 		}
 		identity = (char)(j+96);
 		
-		int[] powerups = {12,2,2};
+		int[] powerups = {12,1,1};
 		tot = 0;
 		for(int i=0; i<powerups.length; i++) {
 			tot += powerups[i];
